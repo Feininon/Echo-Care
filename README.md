@@ -80,15 +80,28 @@ mental_health_chatbot/
 3.  **Chat:**  Start chatting with the chatbot.  Your chat history will be stored and used to provide more
 relevant responses.
 
-## Contributing
-
-Contributions are welcome!  Please follow these guidelines:
-
-*   Fork the repository.
-*   Create a new branch for your feature or bug fix.
-*   Make your changes and commit them with descriptive commit messages.
-*   Push your branch to your fork.
-*   Submit a pull request to the main repository.
+```mermaid
+graph TD
+    A[User] --> B{Flask App (app.py)};
+    B --> C{Login/Signup};
+    C -- Signup --> D[Store User Data in MongoDB];
+    C -- Login --> E{Authentication with Bcrypt};
+    E -- Success --> F[Load User FAISS Index & Message Store];
+    E -- Failure --> C;
+    F --> G[Chat Interface];
+    G --> H{User Input};
+    H --> I[Detect Crisis Keywords];
+    I -- Crisis Detected --> J[Display Crisis Resources & Stop Chat];
+    I -- No Crisis --> K[Retrieve Context from FAISS];
+    K --> L[Generate Response with Ollama (llama3.2)];
+    L --> M[Store User Input & Bot Response in MongoDB & FAISS];
+    M --> G;
+    G --> N{Logout};
+    N --> O[End Session];
+    D --> G;
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style J fill:#fcc,stroke:#333,stroke-width:2px
+```
 
 ## License
 
