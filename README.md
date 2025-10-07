@@ -34,10 +34,6 @@ resources.
 *   **Ollama:**  Install Ollama and download the llama3.2 model: [https://ollama.com/](https://ollama.com/)
 *   **Required Python Packages:**  Install the necessary packages using `pip`:
 
-```bash
-pip install Flask Flask-Bcrypt Flask-Login pymongo faiss-cpu langchain-ollama ollama
-```
-
 ## Setup and Installation
 
 1.  **Clone the Repository:**
@@ -56,7 +52,7 @@ and uses the database "mental\_health\_chatbot".
 3.  **Install Dependencies:**
 
 ```bash
-pip install -r requirements.txt  # If you have a requirements.txt file.  Otherwise see above.
+pip install Flask Flask-Bcrypt Flask-Login pymongo faiss-cpu langchain-ollama ollama
 ```
 
 4.  **Run the Application:**
@@ -75,7 +71,6 @@ mental_health_chatbot/
 ├── README.md       # This file
 ├── faiss_indexes/   # Directory to store Faiss indexes (created at runtime)
 ├── messages/       # Directory to store message histories (created at runtime)
-└── requirements.txt # (Optional) list of dependencies
 ```
 
 ## Usage
